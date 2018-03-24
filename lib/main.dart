@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     FloatingActionButton(
                       onPressed: _incrementPlayerOneCounter,
-                      child: Icon(Icons.arrow_upward),
+                      child: Icon(Icons.add),
                     ),
                     Text(
                       'Player One: $_playerOne',
@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     FloatingActionButton(
                       onPressed: _decrementPlayerOneCounter,
-                      child: Icon(Icons.arrow_downward),
+                      child: Icon(Icons.remove),
                     ),
                   ]
               ),
@@ -146,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   FloatingActionButton(
                     onPressed: _incrementPlayerTwoCounter,
-                    child: Icon(Icons.arrow_upward),
+                    child: Icon(Icons.add),
                   ),
                   Text(
                     'Player Two: $_playerTwo',
@@ -157,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   FloatingActionButton(
                     onPressed: _decrementPlayerTwoCounter,
-                    child: Icon(Icons.arrow_downward),
+                    child: Icon(Icons.remove),
                   ),
                 ]
             ),
