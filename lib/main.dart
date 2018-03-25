@@ -46,34 +46,37 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _playerIDOne = 1;
+  int _playerIDTwo = 2;
   int _playerOne = 0;
   int _playerTwo = 0;
   int _dice = 0;
 
-  void _incrementPlayerOneCounter() {
+  void _increment(int who) {
+    bool isPlayerOne = who == 1;
+    int player = (who == 1 ? _playerOne : _playerTwo);
     setState(() {
-      _playerOne++;
-    });
-  }
-
-  void _incrementPlayerTwoCounter() {
-    setState(() {
-      _playerTwo++;
-    });
-  }
-
-  void _decrementPlayerOneCounter() {
-    setState(() {
-      if (_playerOne > 0) {
-        _playerOne--;
+      player++;
+      if (isPlayerOne) {
+        _playerOne = player;
+      } else {
+        _playerTwo = player;
       }
     });
   }
 
-  void _decrementPlayerTwoCounter() {
+
+  void _decrement(int who) {
+    bool isPlayerOne = who == 1;
+    int player = (isPlayerOne ? _playerOne : _playerTwo);
     setState(() {
-      if (_playerTwo > 0) {
-        _playerTwo--;
+      if (player > 0) {
+        player--;
+        if (isPlayerOne) {
+          _playerOne = player;
+        } else {
+          _playerTwo = player;
+        }
       }
     });
   }
@@ -108,18 +111,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     FloatingActionButton(
-                      onPressed: _incrementPlayerOneCounter,
+                      onPressed: () {
+                        _increment(_playerIDOne);
+                      },
                       child: Icon(Icons.add),
                     ),
                     Text(
-                      'Player One: $_playerOne',
+                      '$_playerOne',
                       style: Theme
                           .of(context)
                           .textTheme
                           .display1,
                     ),
                     FloatingActionButton(
-                      onPressed: _decrementPlayerOneCounter,
+                      onPressed: () {
+                        _decrement(_playerIDOne);
+                      },
                       child: Icon(Icons.remove),
                     ),
                   ]
@@ -145,18 +152,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   FloatingActionButton(
-                    onPressed: _incrementPlayerTwoCounter,
+                    onPressed: () {
+                      _increment(_playerIDTwo);
+                    },
                     child: Icon(Icons.add),
                   ),
                   Text(
-                    'Player Two: $_playerTwo',
+                    '$_playerTwo',
                     style: Theme
                         .of(context)
                         .textTheme
                         .display1,
                   ),
                   FloatingActionButton(
-                    onPressed: _decrementPlayerTwoCounter,
+                    onPressed: () {
+                      _decrement(_playerIDTwo);
+                    },
                     child: Icon(Icons.remove),
                   ),
                 ]
